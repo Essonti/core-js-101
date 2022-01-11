@@ -59,29 +59,8 @@ function willYouMarryMe(isPositiveAnswer) {
  *    })
  *
  */
-//  throw new Error('Not implemented');
 function processAllPromises(array) {
-  function isPlainValue(value) {
-    // for (let i = 2; i <= value / 2; i += 1) {
-    if (value % 2 === 0) {
-      return false;
-      // }
-    }
-    return true;
-  }
-  const arrMod = [];
-  let result;
-  return new Promise((resolve) => {
-    array.forEach((el, index) => {
-      el.then((res) => {
-        arrMod[index] = res;
-        if (arrMod.length === array.length) {
-          result = arrMod.filter(isPlainValue);
-          resolve(result);
-        }
-      });
-    });
-  });
+  return Promise.all(array);
 }
 
 /**
