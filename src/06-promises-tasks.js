@@ -59,17 +59,29 @@ function willYouMarryMe(isPositiveAnswer) {
  *    })
  *
  */
-// function isPlainValue(value) {
-//   for (let i = 2; i <= value / 2; i += 1) {
-//     if (value % 2 === 0) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
-  // return Promise.all(array).then((res) => res.filter(isPlainValue));
+//  throw new Error('Not implemented');
+function processAllPromises(array) {
+  function isPlainValue(value) {
+    // for (let i = 2; i <= value / 2; i += 1) {
+    if (value % 2 === 0) {
+      return false;
+      // }
+    }
+    return true;
+  }
+  const arrMod = [];
+  let result;
+  return new Promise((resolve) => {
+    array.forEach((el, index) => {
+      el.then((res) => {
+        arrMod[index] = res;
+        if (arrMod.length === array.length) {
+          result = arrMod.filter(isPlainValue);
+          resolve(result);
+        }
+      });
+    });
+  });
 }
 
 /**
@@ -113,23 +125,18 @@ function getFastestPromise(array) {
  *
  */
 function chainPromises(array, action) {
-  const result = new Promise((resolve) => {
-    const resArr = [];
-    const index = 0;
-    function ArrayFiller(i) {
-      array[i].then((res) => {
-        resArr[i] = res;
-        if (i !== array.length - 1) {
-          const iMod = i + 1;
-          return new ArrayFiller(iMod);
-        }
-        return resolve(resArr);
-      });
-    }
-    ArrayFiller(index);
-  });
+  const arrMod = [];
+  let result;
   return new Promise((resolve) => {
-    resolve(result.then((res) => (res.reduce(action, 0))));
+    array.forEach((el, index) => {
+      el.then((res) => {
+        arrMod[index] = res;
+        if (arrMod.length === array.length) {
+          result = arrMod.reduce(action);
+          resolve(result);
+        }
+      });
+    });
   });
 }
 
