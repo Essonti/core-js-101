@@ -365,8 +365,49 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const result = [];
+  arr.map((el) => {
+    if (el === 'zero') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'one') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'two') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'three') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'four') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'five') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'six') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'seven') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'eight') result.push(el);
+    return result;
+  });
+  arr.map((el) => {
+    if (el === 'nine') result.push(el);
+    return result;
+  });
+  return result;
 }
 
 /**
@@ -381,8 +422,8 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  return arr.reduce((sum, curr) => sum + curr, 0);
 }
 
 /**
@@ -397,8 +438,8 @@ function getItemsSum(/* arr */) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  return arr.filter((el) => el === null || el === undefined || (Number.isNaN(el)) || el === false || el === 0 || el === '').length;
 }
 
 /**
