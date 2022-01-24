@@ -456,8 +456,8 @@ function getFalsyValuesCount(arr) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  return arr.filter((el) => el === item).length;
 }
 
 /**
@@ -471,8 +471,8 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join();
 }
 
 
@@ -504,6 +504,15 @@ function toStringList(/* arr */) {
  */
 function sortCitiesArray(/* arr */) {
   throw new Error('Not implemented');
+  // arr.sort((a, b) => {
+  //   if (a.country > b.country && a.city > b.city) {
+  //     return 1;
+  //   }
+  //   if (a.country < b.country && a.city < b.city) {
+  //     return -1;
+  //   }
+  //   return 0;
+  // });
 }
 
 /**
@@ -524,8 +533,11 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  let arr = Array.from(new Array(n));
+  arr = arr.map(() => Array.from(new Array(n)));
+  arr = arr.map((el, ind) => el.map((subEl, subInd) => (ind === subInd ? 1 : 0)));
+  return arr;
 }
 
 /**
@@ -541,8 +553,9 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  const arr = Array.from(new Array(end - start + 1));
+  return arr.map((el, index) => start + index);
 }
 
 /**
@@ -556,8 +569,15 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const result = [];
+  arr.map((el) => {
+    if (!result.find((elResult) => el === elResult)) {
+      result.push(el);
+    }
+    return el;
+  });
+  return result;
 }
 
 /**
